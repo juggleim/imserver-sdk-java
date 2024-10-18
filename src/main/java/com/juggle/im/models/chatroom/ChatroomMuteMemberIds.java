@@ -9,10 +9,16 @@ public class ChatroomMuteMemberIds {
     private String chatId;
     @SerializedName("member_ids")
     private List<String> memberIds;
+    @SerializedName("end_time")
+    public long endTime;
+    @SerializedName("end_time_offset")
+    public long endTimeOffset;
 
-    public ChatroomMuteMemberIds(String chatId, List<String> memberIds){
+    public ChatroomMuteMemberIds(String chatId, List<String> memberIds,long endTime,long endTimeOffset){
         this.chatId = chatId;
         this.memberIds = memberIds;
+        this.endTime = endTime;
+        this.endTimeOffset = endTimeOffset;
     }
 
     public List<String> getMemberIds(){
