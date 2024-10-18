@@ -6,7 +6,6 @@ import java.util.Map;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
-import com.juggle.im.models.user.UserInfoResult;
 import com.juggle.im.models.user.UserTags;
 import com.juggle.im.models.user.UserTagsResult;
 import com.juggle.im.util.GsonUtil;
