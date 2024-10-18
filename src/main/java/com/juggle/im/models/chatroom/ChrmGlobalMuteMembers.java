@@ -4,19 +4,12 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ChatroomMuteMembers {
-    @SerializedName("chat_id")
-    private String chatId;
+public class ChrmGlobalMuteMembers {
     @SerializedName("members")
     private List<ChatroomMember> members;
     @SerializedName("offset")
     private String offset;
-
-    public ChatroomMuteMembers(){}
-
-    public String getChatId(){
-        return this.chatId;
-    }
+    public ChrmGlobalMuteMembers(){}
 
     public List<ChatroomMember> getMembers(){
         return this.members;

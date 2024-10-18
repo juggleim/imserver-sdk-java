@@ -6,12 +6,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class ChatroomMuteMemberIds {
     @SerializedName("chat_id")
-    public String chatId;
+    private String chatId;
     @SerializedName("member_ids")
-    public List<String> memberIds;
+    private List<String> memberIds;
 
     public ChatroomMuteMemberIds(String chatId, List<String> memberIds){
         this.chatId = chatId;
         this.memberIds = memberIds;
+    }
+
+    public List<String> getMemberIds(){
+        return this.memberIds;
+    }
+
+    public String getChatId(){
+        return this.chatId;
     }
 }
