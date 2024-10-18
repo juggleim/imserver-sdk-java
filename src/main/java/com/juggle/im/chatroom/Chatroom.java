@@ -12,8 +12,15 @@ import com.juggle.im.util.HttpUtil;
 
 public class Chatroom {
     private JuggleIm juggleim;
+
+    public ChatroomMemberBan chrmMemberBan;
+    public ChatroomMemberMute chrmMemberMute;
+
     public Chatroom(JuggleIm juggleim){
         this.juggleim = juggleim;
+
+        this.chrmMemberBan = new ChatroomMemberBan(this.juggleim);
+        this.chrmMemberMute = new ChatroomMemberMute(this.juggleim);
     }
 
     public ResponseResult create(ChatroomInfo chatroom)throws Exception{

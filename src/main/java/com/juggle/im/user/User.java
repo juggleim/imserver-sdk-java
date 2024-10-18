@@ -12,8 +12,12 @@ import com.juggle.im.util.HttpUtil;
 
 public class User {
     private JuggleIm juggleim;
+
+    public UserBan userBan;
+
     public User(JuggleIm juggleim){
         this.juggleim = juggleim;
+        this.userBan = new UserBan(this.juggleim);
     }
 
     public UserTokenResult register(UserInfo user)throws Exception{
