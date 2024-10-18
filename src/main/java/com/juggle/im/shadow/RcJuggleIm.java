@@ -14,4 +14,8 @@ public class RcJuggleIm {
         this.user = new RcUser(this.juggleim);
         this.chatroom = new RcChatroom(this.juggleim);
     }
+
+    public JuggleIm getJuggleIm(){
+        return this.juggleim;
+    }
 }
