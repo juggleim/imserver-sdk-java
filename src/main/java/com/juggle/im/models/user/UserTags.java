@@ -14,4 +14,8 @@ public class UserTags {
         this.userTags = userTags;
         return this;
     }
+
+    public List<UserTag> getUserTags(){
+        return this.userTags;
+    }
 }

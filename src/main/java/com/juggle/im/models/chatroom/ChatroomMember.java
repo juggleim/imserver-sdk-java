@@ -9,6 +9,8 @@ public class ChatroomMember {
     private String memberName;
     @SerializedName("added_time")
     private long addedTime;
+    @SerializedName("end_time")
+    private long endTime;
 
     public ChatroomMember(String memberId, String memberName){
         this.memberId = memberId;
@@ -35,5 +37,9 @@ public class ChatroomMember {
 
     public long getAddedTime(){
         return this.addedTime;
+    }
+
+    public long getEndTime(){
+        return this.endTime;
     }
 }

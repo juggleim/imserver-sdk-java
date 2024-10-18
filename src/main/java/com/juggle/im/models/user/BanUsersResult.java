@@ -13,6 +13,10 @@ public class BanUsersResult extends Result {
         this.banUsers = banUsers;
     }
 
+    public BanUsers getBanUsers(){
+        return this.banUsers;
+    }
+
     @Override
 	public String toString() {
 		return GsonUtil.toJson(this, BanUsersResult.class);

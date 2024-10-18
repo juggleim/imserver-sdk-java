@@ -46,7 +46,7 @@ public class UserBan {
         return result;
     }
 
-    public BanUsersResult getList(String chatId, int limit, String offset)throws Exception{
+    public BanUsersResult getList(int limit, String offset)throws Exception{
         String urlPath = this.juggleim.getApiUrl()+"/apigateway/users/banusers/query?";
         urlPath = urlPath + "limit="+limit;
         urlPath = urlPath + "&offset="+offset;
@@ -60,5 +60,23 @@ public class UserBan {
             result = new BanUsersResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
         }
         return result;
+    }
+
+    public BanUsersResult getList(Integer size, Integer page)throws Exception{
+        String urlPath = this.juggleim.getApiUrl()+"/apigateway/users/banusers/query";
+        HttpURLConnection conn = HttpUtil.CreateGetHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(),urlPath);
+        String response = "";
+        BanUsersResult result = null;
+        try{
+            response = HttpUtil.returnResult(conn);
+            result = (BanUsersResult)GsonUtil.fromJson(response, BanUsersResult.class);
+        }catch(Exception e){
+            result = new BanUsersResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
+        }
+        return result;
+    }
+
+    public BanUsersResult getList()throws Exception{
+        return getList(null, null);
     }
 }

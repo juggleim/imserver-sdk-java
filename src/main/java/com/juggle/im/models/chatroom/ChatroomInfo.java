@@ -46,6 +46,11 @@ public class ChatroomInfo {
         return this.memberCount;
     }
 
+    public ChatroomInfo setIsMute(int isMute){
+        this.isMute = isMute;
+        return this;
+    }
+
     public int getIsMute(){
         return this.isMute;
     }

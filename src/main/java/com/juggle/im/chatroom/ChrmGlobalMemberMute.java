@@ -47,10 +47,14 @@ public class ChrmGlobalMemberMute {
         return result;
     }
 
-    public ChrmGlobalMuteMembersResult getList(String chatId, int limit, String offset)throws Exception{
+    public ChrmGlobalMuteMembersResult getList(Integer limit, String offset)throws Exception{
         String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/globalmutemembers/query?";
-        urlPath = urlPath + "&limit="+limit;
-        urlPath = urlPath + "&offset="+offset;
+        if(limit!=null){
+            urlPath = urlPath + "&limit="+limit;
+        }
+        if(offset!=null){
+            urlPath = urlPath + "&offset="+offset;
+        }
         HttpURLConnection conn = HttpUtil.CreateGetHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(),urlPath);
         String response = "";
         ChrmGlobalMuteMembersResult result = null;

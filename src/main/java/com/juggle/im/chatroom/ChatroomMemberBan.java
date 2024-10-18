@@ -47,10 +47,14 @@ public class ChatroomMemberBan {
         return result;
     }
 
-    public ChatroomBanMembersResult getList(String chatId, int limit, String offset)throws Exception{
+    public ChatroomBanMembersResult getList(String chatId, Integer limit, String offset)throws Exception{
         String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/banmembers/query?chat_id="+URLEncoder.encode(chatId, "UTF-8");
-        urlPath = urlPath + "&limit="+limit;
-        urlPath = urlPath + "&offset="+offset;
+        if(limit!=null){
+            urlPath = urlPath + "&limit="+limit;
+        }
+        if(offset!=null){
+            urlPath = urlPath + "&offset="+offset;
+        }
         HttpURLConnection conn = HttpUtil.CreateGetHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(),urlPath);
         String response = "";
         ChatroomBanMembersResult result = null;

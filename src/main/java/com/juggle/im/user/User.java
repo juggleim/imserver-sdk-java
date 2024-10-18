@@ -14,10 +14,12 @@ public class User {
     private JuggleIm juggleim;
 
     public UserBan userBan;
+    public TagUser tagUser;
 
     public User(JuggleIm juggleim){
         this.juggleim = juggleim;
         this.userBan = new UserBan(this.juggleim);
+        this.tagUser = new TagUser(this.juggleim);
     }
 
     public UserTokenResult register(UserInfo user)throws Exception{

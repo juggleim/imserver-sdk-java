@@ -2,47 +2,52 @@ package com.juggle.im.models.message;
 
 import com.google.gson.annotations.SerializedName;
 import com.juggle.im.messages.BaseMessage;
-import com.juggle.im.util.GsonUtil;
 
 public class MessageModel{
     @SerializedName("sender_id")
     private String senderId;
     @SerializedName("target_ids")
-    private String[] targetId;
+    private String[] targetIds;
     @SerializedName("msg_type")
-    private String objectName;
+    private String msgType;
     @SerializedName("msg_content")
-    private BaseMessage content;
+    private String msgContent;
+    
     private String pushContent;
     private String pushExt;
 
     public MessageModel(){}
 
-    public String[] getTargetId() {
-        return this.targetId;
+    public String[] getTargetIds() {
+        return this.targetIds;
     }
 
-    public MessageModel setTargetId(String[] targetId) {
-        this.targetId = targetId;
+    public MessageModel setTargetIds(String[] targetIds) {
+        this.targetIds = targetIds;
         return this;
     }
 
-    @Deprecated
-    public MessageModel setObjectName(String objectName) {
-        this.objectName = objectName;
+    public MessageModel setMsgType(String msgType) {
+        this.msgType = msgType;
         return this;
     }
 
-    public String getObjectName() {
-        return this.objectName;
+    public String getMsgType() {
+        return this.msgType;
     }
 
-    public BaseMessage getContent() {
-        return this.content;
+    public String getMsgContent() {
+        return this.msgContent;
     }
 
-    public MessageModel setContent(BaseMessage content) {
-        this.content = content;
+    public MessageModel setMsgContent(String content) {
+        this.msgContent = content;
+        return this;
+    }
+
+     public MessageModel setMsgContent(BaseMessage baseMessage){
+        this.setMsgContent(baseMessage.toString());
+        this.setMsgType(baseMessage.getType());
         return this;
     }
 

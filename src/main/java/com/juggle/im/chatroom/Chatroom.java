@@ -64,7 +64,7 @@ public class Chatroom {
     }
 
     public ChatroomInfoResult get(String chatId, int count, int order)throws Exception{
-        String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/info?chat_id="+URLEncoder.encode(chatId, "UTF-8");
+        String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/info?with_members=true&chat_id="+URLEncoder.encode(chatId, "UTF-8");
         urlPath = urlPath + "&count="+count;
         urlPath = urlPath + "&order="+order;
         HttpURLConnection conn = HttpUtil.CreateGetHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(),urlPath);

@@ -47,10 +47,14 @@ public class ChatroomMemberMute {
         return result;
     }
 
-    public ChatroomMuteMembersResult getList(String chatId, int limit, String offset)throws Exception{
+    public ChatroomMuteMembersResult getList(String chatId, Integer limit, String offset)throws Exception{
         String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/mutemembers/query?chat_id="+URLEncoder.encode(chatId, "UTF-8");
-        urlPath = urlPath + "&limit="+limit;
-        urlPath = urlPath + "&offset="+offset;
+        if(limit!=null){
+            urlPath = urlPath + "&limit="+limit;
+        }
+        if(offset!=null){
+            urlPath = urlPath + "&offset="+offset;
+        }
         HttpURLConnection conn = HttpUtil.CreateGetHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(),urlPath);
         String response = "";
         ChatroomMuteMembersResult result = null;

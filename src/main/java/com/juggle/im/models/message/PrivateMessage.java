@@ -1,15 +1,14 @@
 package com.juggle.im.models.message;
 
 import com.google.gson.annotations.SerializedName;
-import com.juggle.im.messages.BaseMessage;
 
 public class PrivateMessage extends MessageModel{
     @SerializedName("is_storage")
-    public Boolean isPersisted;
+    public Boolean isStorage;
     @SerializedName("is_count")
-    public Boolean isCounted;
+    public Boolean isCount;
     @SerializedName("is_notify_sender")
-    public Boolean isIncludeSender;
+    public Boolean isNotifySender;
 
     @Override
     public PrivateMessage setSenderId(String senderId) {
@@ -23,22 +22,16 @@ public class PrivateMessage extends MessageModel{
      * @return String
      */
     @Override
-    public String[] getTargetId() {
-        return super.getTargetId();
+    public String[] getTargetIds() {
+        return super.getTargetIds();
     }
 
     /**
      * 设置接受用户id
      */
     @Override
-    public PrivateMessage setTargetId(String[] targetId) {
-        super.setTargetId(targetId);
-        return this;
-    }
-
-    @Override
-    public PrivateMessage setContent(BaseMessage content) {
-        super.setContent(content);
+    public PrivateMessage setTargetIds(String[] targetId) {
+        super.setTargetIds(targetId);
         return this;
     }
 
@@ -54,30 +47,30 @@ public class PrivateMessage extends MessageModel{
         return this;
     }
 
-    public Boolean getIsPersisted() {
-        return this.isPersisted;
+    public Boolean getIsStorage() {
+        return this.isStorage;
     }
 
-    public PrivateMessage setIsPersisted(Boolean isPersisted) {
-        this.isPersisted = isPersisted;
+    public PrivateMessage setIsStorage(Boolean isStorage) {
+        this.isStorage = isStorage;
         return this;
     }
 
-    public Boolean getIsCounted() {
-        return this.isCounted;
+    public Boolean getIsCount() {
+        return this.isCount;
     }
 
-    public PrivateMessage setIsCounted(Boolean isCounted) {
-        this.isCounted = isCounted;
+    public PrivateMessage setIsCount(Boolean isCount) {
+        this.isCount = isCount;
         return this;
     }
 
-    public Boolean getIsIncludeSender() {
-        return this.isIncludeSender;
+    public Boolean getIsNotifySender() {
+        return this.isNotifySender;
     }
 
-    public PrivateMessage setIsIncludeSender(Boolean isIncludeSender) {
-        this.isIncludeSender = isIncludeSender;
+    public PrivateMessage setIsNotifySender(Boolean isNotifySender) {
+        this.isNotifySender = isNotifySender;
         return this;
     }
 }

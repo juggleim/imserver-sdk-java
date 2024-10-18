@@ -1,13 +1,12 @@
 package com.juggle.im.models.message;
 
 import com.google.gson.annotations.SerializedName;
-import com.juggle.im.messages.BaseMessage;
 
 public class ChatroomMessage extends MessageModel{
     @SerializedName("is_notify_sender")
-    public Boolean isIncludeSender;
+    public Boolean isNotifySender;
      @SerializedName("is_storage")
-    public Boolean isPersisted;
+    public Boolean isStorage;
     @SerializedName("priority")
     public Integer priority = null;
 
@@ -25,8 +24,8 @@ public class ChatroomMessage extends MessageModel{
      * @return String
      */
     @Override
-    public String[] getTargetId() {
-        return super.getTargetId();
+    public String[] getTargetIds() {
+        return super.getTargetIds();
     }
     /**
      * 设置接受聊天室Id
@@ -34,31 +33,26 @@ public class ChatroomMessage extends MessageModel{
      * @return String
      */
     @Override
-    public ChatroomMessage setTargetId(String[] targetId) {
-        super.setTargetId(targetId);
-        return this;
-    }
-    @Override
-    public ChatroomMessage setObjectName(String objectName) {
-        super.setObjectName(objectName);
+    public ChatroomMessage setTargetIds(String[] targetId) {
+        super.setTargetIds(targetId);
         return this;
     }
 
-    public Boolean getIsPersisted() {
-        return this.isPersisted;
+    public Boolean getIsStorage() {
+        return this.isStorage;
     }
 
-    public ChatroomMessage setIsPersisted(Boolean isPersisted) {
-        this.isPersisted = isPersisted;
+    public ChatroomMessage setIsStorage(Boolean isStorage) {
+        this.isStorage = isStorage;
         return this;
     }
 
-    public Boolean getIsIncludeSender() {
-        return this.isIncludeSender;
+    public Boolean getIsNotifySender() {
+        return this.isNotifySender;
     }
 
-    public ChatroomMessage setIsIncludeSender(Boolean isIncludeSender) {
-        this.isIncludeSender = isIncludeSender;
+    public ChatroomMessage setIsNotifySender(Boolean isNotifySender) {
+        this.isNotifySender = isNotifySender;
         return this;
     }
 
@@ -68,12 +62,6 @@ public class ChatroomMessage extends MessageModel{
 
     public ChatroomMessage setPriority(Integer priority) {
         this.priority = priority;
-        return this;
-    }
-
-    @Override
-    public ChatroomMessage setContent(BaseMessage content) {
-        super.setContent(content);
         return this;
     }
 }
