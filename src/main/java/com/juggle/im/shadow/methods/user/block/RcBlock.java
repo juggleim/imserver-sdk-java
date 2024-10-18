@@ -26,7 +26,6 @@ public class RcBlock {
         List<BanUser> users = new ArrayList<BanUser>();
         BanUser banUser = new BanUser();
         banUser.setUserId(rcUser.id);
-        banUser.setBanType(1);
         banUser.setEndTime(System.currentTimeMillis()+(rcUser.getMinute()*60*1000));
         users.add(banUser);
         ResponseResult result = this.juggleim.user.userBan.add(banUsers);
@@ -39,7 +38,6 @@ public class RcBlock {
         List<BanUser> users = new ArrayList<BanUser>();
         BanUser banUser = new BanUser();
         banUser.setUserId(userId);
-        banUser.setBanType(1);
         users.add(banUser);
         ResponseResult result = this.juggleim.user.userBan.remove(banUsers);
         return new io.rong.models.response.ResponseResult(result.getCode(), result.getErrorMessage());

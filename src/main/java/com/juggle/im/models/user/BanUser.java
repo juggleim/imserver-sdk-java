@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 public class BanUser {
     @SerializedName("user_id")
     private String userId;
-    @SerializedName("ban_type")
-    private int banType;
     @SerializedName("created_time")
     private long createdTime;
     @SerializedName("end_time")
@@ -29,15 +27,6 @@ public class BanUser {
 
     public String getUserId(){
         return this.userId;
-    }
-
-    public BanUser setBanType(int banType){
-        this.banType = banType;
-        return this;
-    }
-
-    public int getBanType(){
-        return this.banType;
     }
 
     public long getCreatedTime(){
