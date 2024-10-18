@@ -1,12 +1,8 @@
 package com.juggle.im.user;
 
 import java.net.HttpURLConnection;
-import java.net.URLEncoder;
-
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
-import com.juggle.im.models.chatroom.ChatroomBanMemberIds;
-import com.juggle.im.models.chatroom.ChatroomBanMembersResult;
 import com.juggle.im.models.user.BanUsers;
 import com.juggle.im.models.user.BanUsersResult;
 import com.juggle.im.util.GsonUtil;
