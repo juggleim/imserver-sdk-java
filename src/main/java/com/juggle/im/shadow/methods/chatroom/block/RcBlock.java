@@ -6,6 +6,7 @@ import java.util.List;
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
 import com.juggle.im.models.chatroom.ChatroomMember;
+import com.juggle.im.shadow.util.DateUtil;
 import com.juggle.im.models.chatroom.ChatroomBanMemberIds;
 import com.juggle.im.models.chatroom.ChatroomBanMembersResult;
 
@@ -23,7 +24,11 @@ public class RcBlock {
         for(io.rong.models.chatroom.ChatroomMember m : chatroom.getMembers()){
             memberIds.add(m.getId());
         }
-        ChatroomBanMemberIds banIds = new ChatroomBanMemberIds(chatroom.getId(), memberIds);
+        long endOffset = 0;
+        if(chatroom.getMinute()!=null){
+            endOffset = ((long)chatroom.getMinute().intValue())*60*1000;
+        }
+        ChatroomBanMemberIds banIds = new ChatroomBanMemberIds(chatroom.getId(), memberIds,0,endOffset);
         ResponseResult result = this.juggleim.chatroom.chrmMemberBan.add(banIds);
         io.rong.models.response.ResponseResult rcResult;
         if(result!=null){
@@ -39,7 +44,7 @@ public class RcBlock {
         for(io.rong.models.chatroom.ChatroomMember m : chatroom.getMembers()){
             memberIds.add(m.getId());
         }
-        ChatroomBanMemberIds banIds = new ChatroomBanMemberIds(chatroom.getId(), memberIds);
+        ChatroomBanMemberIds banIds = new ChatroomBanMemberIds(chatroom.getId(), memberIds,0,0);
         ResponseResult result = this.juggleim.chatroom.chrmMemberBan.remove(banIds);
         io.rong.models.response.ResponseResult rcResult;
         if(result!=null){
@@ -60,6 +65,7 @@ public class RcBlock {
                     io.rong.models.chatroom.ChatroomMember member = new io.rong.models.chatroom.ChatroomMember();
                     member.setChatroomId(chatroomId);
                     member.setId(m.getMemberId());
+                    member.setTime(DateUtil.formatTime(m.getEndTime()));
                     members.add(member);
                 }
                 rcResult = new io.rong.models.response.ListBlockChatroomUserResult(members);

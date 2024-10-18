@@ -8,6 +8,7 @@ import com.juggle.im.models.ResponseResult;
 import com.juggle.im.models.chatroom.ChatroomMember;
 import com.juggle.im.models.chatroom.ChrmGlobalMuteMemberIds;
 import com.juggle.im.models.chatroom.ChrmGlobalMuteMembersResult;
+import com.juggle.im.shadow.util.DateUtil;
 
 import io.rong.models.chatroom.ChatroomModel;
 
@@ -23,7 +24,11 @@ public class RcBan {
         for(io.rong.models.chatroom.ChatroomMember m : chatroom.getMembers()){
             ids.add(m.id);
         }
-        ChrmGlobalMuteMemberIds muteIds = new ChrmGlobalMuteMemberIds(ids);
+        long endOffset = 0;
+        if(chatroom.getMinute()!=null){
+            endOffset = ((long)chatroom.getMinute().intValue())*60*1000;
+        }
+        ChrmGlobalMuteMemberIds muteIds = new ChrmGlobalMuteMemberIds(ids,0,endOffset);
         ResponseResult result = this.juggleim.chatroom.chrmGlobalMute.add(muteIds);
         io.rong.models.response.ResponseResult rcResult;
         if(result!=null){
@@ -39,7 +44,7 @@ public class RcBan {
         for(io.rong.models.chatroom.ChatroomMember m : chatroom.getMembers()){
             ids.add(m.id);
         }
-        ChrmGlobalMuteMemberIds muteIds = new ChrmGlobalMuteMemberIds(ids);
+        ChrmGlobalMuteMemberIds muteIds = new ChrmGlobalMuteMemberIds(ids,0,0);
         ResponseResult result = this.juggleim.chatroom.chrmGlobalMute.remove(muteIds);
         io.rong.models.response.ResponseResult rcResult;
         if(result!=null){
@@ -60,6 +65,7 @@ public class RcBan {
                     io.rong.models.chatroom.ChatroomMember member = new io.rong.models.chatroom.ChatroomMember();
                     member.setChatroomId("");
                     member.setId(m.getMemberId());
+                    member.setTime(DateUtil.formatTime(m.getEndTime()));
                     members.add(member);
                 }
                 rcResult = new io.rong.models.response.ListGagChatroomUserResult(members);
