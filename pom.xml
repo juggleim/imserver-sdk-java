@@ -11,24 +11,15 @@
 
   <name>imserver-sdk-java</name>
   <description>
-        For improving the efficiency of developers, JuggleIM provides an open source IM Server SDK officially.
+        For improving the efficiency of developers, JIM provides an open source IM Server SDK officially.
         With this SDK, you can get token, send messages, add sensitive words, ban user, manage group, create chat room and so on.
   </description>
-  <url>http://github.com/juggleim/imserver-sdk-java</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>23</maven.compiler.source>
     <maven.compiler.target>23</maven.compiler.target>
   </properties>
-  <scm>
-    <url>https://github.com/juggleim/imserver-sdk-java</url>
-    <connection>scm:git:https://github.com/juggleim/imserver-sdk-java.git</connection>
-  </scm>
-  <organization>
-    <name>JuggleIM Group</name>
-    <url>https://github.com/juggleim</url>
-  </organization>
   <licenses>
     <license>
         <name>Apache 2</name>
@@ -37,12 +28,6 @@
         <comments>A business-friendly OSS license</comments>
     </license>
   </licenses>
-  <developers>
-        <developer>
-            <id>juggleim</id>
-            <name>juggleim</name>
-        </developer>
-    </developers>
 
   <dependencies>
     <dependency>

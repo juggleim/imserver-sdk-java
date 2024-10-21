@@ -1,14 +1,15 @@
-package com.juggle.im;
+# imserver-sdk-java
+The Java SDK for JIM API
+
+# example
+
+```java
 
 import com.juggle.im.shadow.RcJuggleIm;
 
 import io.rong.models.response.TokenResult;
 import io.rong.models.user.UserModel;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -23,3 +24,5 @@ public class App
         }
     }
 }
+
+```
