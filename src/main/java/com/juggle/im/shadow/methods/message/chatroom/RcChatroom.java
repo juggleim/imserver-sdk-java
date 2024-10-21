@@ -3,6 +3,7 @@ package com.juggle.im.shadow.methods.message.chatroom;
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
 import com.juggle.im.models.message.ChatroomMessage;
+import com.juggle.im.models.message.RecallMessage;
 
 public class RcChatroom {
     private JuggleIm juggleim;
@@ -42,6 +43,19 @@ public class RcChatroom {
         msg.setIsStorage(message.getIsPersisted()>0);
         msg.setIsNotifySender(message.getIsIncludeSender()>0);
         ResponseResult result = this.juggleim.msgSender.sendChatroomMsg(msg);
+        io.rong.models.response.ResponseResult rcResult;
+        if(result!=null){
+            rcResult = new io.rong.models.response.ResponseResult(result.getCode(), result.getErrorMessage());
+        }else{
+            rcResult = new io.rong.models.response.ResponseResult(500, "can not get data.");
+        }
+        return rcResult;
+    }
+
+    public io.rong.models.response.ResponseResult recall(io.rong.models.message.RecallMessage message)throws Exception{
+        long msgTime = Long.parseLong(message.getSentTime());
+        RecallMessage recall  = new RecallMessage(3, message.getSenderId(), message.getTargetId(), message.getUId(), msgTime, message.getExtra());
+        ResponseResult result = this.juggleim.msgSender.recallMsg(recall);
         io.rong.models.response.ResponseResult rcResult;
         if(result!=null){
             rcResult = new io.rong.models.response.ResponseResult(result.getCode(), result.getErrorMessage());
