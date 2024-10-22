@@ -4,11 +4,11 @@ import com.juggle.im.JuggleIm;
 import com.juggle.im.shadow.methods.message.chatroom.RcChatroom;
 import com.juggle.im.shadow.methods.message._private.RcPrivate;
 
-public class Message {
+public class RcMessage {
     private JuggleIm juggleim;
     public RcPrivate msgPrivate;
     public RcChatroom msgChatroom;
-    public Message(JuggleIm juggleim){
+    public RcMessage(JuggleIm juggleim){
         this.juggleim = juggleim;
 
         this.msgPrivate = new RcPrivate(this.juggleim);
