@@ -7,6 +7,8 @@ import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
 import com.juggle.im.models.chatroom.ChatroomInfo;
 import com.juggle.im.models.chatroom.ChatroomInfoResult;
+import com.juggle.im.models.chatroom.ChrmMemberIds;
+import com.juggle.im.models.chatroom.ChrmMembersExistResult;
 import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;
 
@@ -75,6 +77,22 @@ public class Chatroom {
             result = (ChatroomInfoResult)GsonUtil.fromJson(response, ChatroomInfoResult.class);
         }catch(Exception e){
             result = new ChatroomInfoResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
+        }
+        return result;
+    }
+
+    public ChrmMembersExistResult memberExists(ChrmMemberIds members)throws Exception{
+        String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/members/exist";
+        String body = GsonUtil.toJson(members);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ChrmMembersExistResult result = null;
+        try{
+            response = HttpUtil.returnResult(conn);
+            result = (ChrmMembersExistResult)GsonUtil.fromJson(response, ChrmMembersExistResult.class);
+        }catch(Exception e){
+            result =  new ChrmMembersExistResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
         }
         return result;
     }
