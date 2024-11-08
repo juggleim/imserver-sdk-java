@@ -4,9 +4,8 @@ import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 
 import com.juggle.im.JuggleIm;
-import com.juggle.im.models.user.UserInfo;
-import com.juggle.im.models.user.UserInfoResult;
-import com.juggle.im.models.user.UserTokenResult;
+import com.juggle.im.models.Result;
+import com.juggle.im.models.user.*;
 import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;
 
@@ -65,6 +64,24 @@ public class User {
             result = (UserTokenResult)GsonUtil.fromJson(response, UserTokenResult.class);
         }catch(Exception e){
             result = new UserTokenResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
+        }
+        return result;
+    }
+
+
+    public KickUsersResult kick(KickUser kickUser)throws Exception{
+        // is need to check params before send http?
+        String urlPath = this.juggleim.getApiUrl()+"/apigateway/users/kick";
+        String body = GsonUtil.toJson(kickUser);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        KickUsersResult result  = null;
+        try{
+            response = HttpUtil.returnResult(conn);
+            result = (KickUsersResult)GsonUtil.fromJson(response, KickUsersResult.class);
+        }catch(Exception e){
+            result = new KickUsersResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
         }
         return result;
     }
