@@ -14,11 +14,13 @@ public class User {
 
     public UserBan userBan;
     public TagUser tagUser;
+    public UserBlock userBlock;
 
     public User(JuggleIm juggleim) {
         this.juggleim = juggleim;
         this.userBan = new UserBan(this.juggleim);
         this.tagUser = new TagUser(this.juggleim);
+        this.userBlock = new UserBlock(this.juggleim);
     }
 
     public UserTokenResult register(UserInfo user) throws Exception {
@@ -85,7 +87,7 @@ public class User {
         return result;
     }
 
-    public UserStatusResult queryOnlineStatusByUserIds(UserStatus userStatus) throws Exception {
+    public UserStatusResult qryOnlineStatusByUserIds(UserStatus userStatus) throws Exception {
         // is need to check params before send http?
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/users/onlinestatus/query";
         String body = GsonUtil.toJson(userStatus);
