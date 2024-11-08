@@ -51,4 +51,24 @@ public class User {
         }
         return result;
     }
+
+    public UserTokenResult update(UserInfo user)throws Exception{
+        // is need to check params before send http
+        String urlPath = this.juggleim.getApiUrl()+"/apigateway/users/update";
+        String body = GsonUtil.toJson(user);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        UserTokenResult result  = null;
+        try{
+            response = HttpUtil.returnResult(conn);
+            result = (UserTokenResult)GsonUtil.fromJson(response, UserTokenResult.class);
+        }catch(Exception e){
+            result = new UserTokenResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
+        }
+        return result;
+    }
+
+
+
 }
