@@ -32,5 +32,21 @@ public class Group {
         return result;
     }
 
+    public ResponseResult dismiss(GroupModel groupModel) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/del";
+        String body = GsonUtil.toJson(groupModel);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ResponseResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (ResponseResult) GsonUtil.fromJson(response, ResponseResult.class);
+        } catch (Exception e) {
+            result = new ResponseResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage());
+        }
+        return result;
+    }
+
 
 }

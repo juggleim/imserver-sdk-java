@@ -18,15 +18,19 @@ public class GroupExample {
     public static void main(String[] args) throws Exception {
         JuggleIm sdk = new JuggleIm(APP_KEY, APP_SECRET, PREFIX_API);
 
-        // create group
-        GroupModel groupModel = new GroupModel();
-        groupModel.setGroupId(RandomUtil.generateRandomString(9));
-        groupModel.setGroupName("蜻蜓队长粉丝群（1）");
-        groupModel.setMemberIds(new String[] {});
-        groupModel.setGroupPortrait("");
-        ResponseResult createGroupResult = sdk.group.create(groupModel);
-        System.out.println("createGroupResult:  " + createGroupResult.toString());
+//        // create group
+//        GroupModel groupModel = new GroupModel();
+//        groupModel.setGroupId(RandomUtil.generateRandomString(9));
+//        groupModel.setGroupName("蜻蜓队长粉丝群（1）");
+//        groupModel.setMemberIds(new String[] {});
+//        groupModel.setGroupPortrait("");
+//        ResponseResult createGroupResult = sdk.group.create(groupModel);
+//        System.out.println("createGroupResult:  " + createGroupResult.toString());
 
+        GroupModel groupDel = new GroupModel();
+        groupDel.setGroupId("mi8t76DVu");
+        ResponseResult dismiss = sdk.group.dismiss(groupDel);
+        System.out.println("dismiss:  " + dismiss.toString());
 
     }
 
