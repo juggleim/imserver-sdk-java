@@ -1,6 +1,7 @@
 package com.juggle.im;
 
 import com.juggle.im.chatroom.Chatroom;
+import com.juggle.im.group.Group;
 import com.juggle.im.message.MsgSender;
 import com.juggle.im.user.User;
 
@@ -11,6 +12,7 @@ public class JuggleIm {
 
     public User user;
     public MsgSender msgSender;
+    public Group group;
     public Chatroom chatroom;
     public JuggleIm(String appkey, String secret, String apiUrl){
         this.appkey = appkey;
@@ -18,6 +20,7 @@ public class JuggleIm {
         this.apiUrl = apiUrl;
         this.user = new User(this);
         this.msgSender = new MsgSender(this);
+        this.group = new Group(this);
         this.chatroom = new Chatroom(this);
     }
 
