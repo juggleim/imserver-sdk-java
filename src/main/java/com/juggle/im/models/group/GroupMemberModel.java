@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Arrays;
 import java.util.Map;
 
-public class GroupModel {
+public class GroupMemberModel {
 
     @SerializedName("group_id")
     private String groupId;
@@ -22,14 +22,14 @@ public class GroupModel {
     @SerializedName("member_ids")
     private String [] memberIds;
 
-    public GroupModel() {
+    public GroupMemberModel() {
     }
 
     public String getGroupId() {
         return groupId;
     }
 
-    public GroupModel setGroupId(String groupId) {
+    public GroupMemberModel setGroupId(String groupId) {
         this.groupId = groupId;
         return this;
     }
@@ -38,7 +38,7 @@ public class GroupModel {
         return groupName;
     }
 
-    public GroupModel setGroupName(String groupName) {
+    public GroupMemberModel setGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
@@ -47,7 +47,7 @@ public class GroupModel {
         return groupPortrait;
     }
 
-    public GroupModel setGroupPortrait(String groupPortrait) {
+    public GroupMemberModel setGroupPortrait(String groupPortrait) {
         this.groupPortrait = groupPortrait;
         return this;
     }
@@ -56,7 +56,7 @@ public class GroupModel {
         return extFields;
     }
 
-    public GroupModel setExtFields(Map<String, String> extFields) {
+    public GroupMemberModel setExtFields(Map<String, String> extFields) {
         this.extFields = extFields;
         return this;
     }
@@ -65,7 +65,7 @@ public class GroupModel {
         return memberIds;
     }
 
-    public GroupModel setMemberIds(String[] memberIds) {
+    public GroupMemberModel setMemberIds(String[] memberIds) {
         this.memberIds = memberIds;
         return this;
     }

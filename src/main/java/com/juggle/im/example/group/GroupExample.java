@@ -2,7 +2,9 @@ package com.juggle.im.example.group;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
-import com.juggle.im.models.group.GroupModel;
+import com.juggle.im.models.group.GroupInfo;
+import com.juggle.im.models.group.GroupMemberModel;
+import com.juggle.im.models.group.GroupResult;
 import com.juggle.im.util.RandomUtil;
 
 public class GroupExample {
@@ -18,19 +20,33 @@ public class GroupExample {
     public static void main(String[] args) throws Exception {
         JuggleIm sdk = new JuggleIm(APP_KEY, APP_SECRET, PREFIX_API);
 
-//        // create group
-//        GroupModel groupModel = new GroupModel();
-//        groupModel.setGroupId(RandomUtil.generateRandomString(9));
-//        groupModel.setGroupName("蜻蜓队长粉丝群（1）");
-//        groupModel.setMemberIds(new String[] {});
-//        groupModel.setGroupPortrait("");
-//        ResponseResult createGroupResult = sdk.group.create(groupModel);
-//        System.out.println("createGroupResult:  " + createGroupResult.toString());
+        // create group
+        GroupMemberModel groupModel = new GroupMemberModel();
+        groupModel.setGroupId(RandomUtil.generateRandomString(9));
+        groupModel.setGroupName("蜻蜓队长粉丝群（1）");
+        groupModel.setMemberIds(new String[]{});
+        groupModel.setGroupPortrait("");
+        ResponseResult createGroupResult = sdk.group.create(groupModel);
+        System.out.println("createGroupResult:  " + createGroupResult.toString());
 
-        GroupModel groupDel = new GroupModel();
-        groupDel.setGroupId("mi8t76DVu");
-        ResponseResult dismiss = sdk.group.dismiss(groupDel);
-        System.out.println("dismiss:  " + dismiss.toString());
+        // update group
+        GroupInfo update = new GroupInfo();
+        update.setGroupId("N5zNVXSAL");
+        update.setGroupName("蛮吉窝窝乡粉丝群（1）");
+        update.setGroupPortrait("https://test.icon.com");
+        ResponseResult updateRes = sdk.group.update(update);
+        System.out.println("updateResult:  " + updateRes.toString());
+
+        // dismiss group
+        GroupMemberModel dismissModel = new GroupMemberModel();
+        dismissModel.setGroupId("mi8t76DVu");
+        ResponseResult dismissRes = sdk.group.dismiss(dismissModel);
+        System.out.println("dismiss:  " + dismissRes.toString());
+
+        // group info
+        GroupResult infoResult = sdk.group.get("N5zNVXSAL");
+        System.out.println("infoResult: " + infoResult.toString());
+
 
     }
 
