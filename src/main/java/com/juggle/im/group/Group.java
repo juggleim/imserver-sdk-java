@@ -84,13 +84,13 @@ public class Group {
 
     /**
      * 解散群
-     * @param groupModel
+     * @param groupDel
      * @return
      * @throws Exception
      */
-    public ResponseResult dismiss(GroupMemberModel groupModel) throws Exception {
+    public ResponseResult dismiss(GroupDel groupDel) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/del";
-        String body = GsonUtil.toJson(groupModel);
+        String body = GsonUtil.toJson(groupDel);
         HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
         HttpUtil.setBodyParameter(body, conn);
         String response = "";

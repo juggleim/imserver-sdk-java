@@ -36,7 +36,7 @@ public class GroupExample {
         System.out.println("updateResult:  " + updateRes.toString());
 
         // dismiss group
-        GroupMemberModel dismissModel = new GroupMemberModel();
+        GroupDel dismissModel = new GroupDel();
         dismissModel.setGroupId("mi8t76DVu");
         ResponseResult dismissRes = sdk.group.dismiss(dismissModel);
         System.out.println("dismiss:  " + dismissRes.toString());
