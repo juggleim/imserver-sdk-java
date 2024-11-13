@@ -2,9 +2,7 @@ package com.juggle.im.group;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
-import com.juggle.im.models.group.GroupInfo;
-import com.juggle.im.models.group.GroupMemberModel;
-import com.juggle.im.models.group.GroupResult;
+import com.juggle.im.models.group.*;
 import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;
 
@@ -21,13 +19,13 @@ public class Group {
 
     /**
      * 创建群
-     * @param groupModel
+     * @param groupAdd
      * @return
      * @throws Exception
      */
-    public ResponseResult create(GroupMemberModel groupModel) throws Exception {
+    public ResponseResult create(GroupAdd groupAdd) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/add";
-        String body = GsonUtil.toJson(groupModel);
+        String body = GsonUtil.toJson(groupAdd);
         HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
         HttpUtil.setBodyParameter(body, conn);
         String response = "";
@@ -42,15 +40,15 @@ public class Group {
     }
 
     /**
-     * 创建群
-     * groupInfo.groupId必填
-     * @param groupInfo
+     * 修改群
+     * groupUpd.groupId必填
+     * @param groupUpd
      * @return
      * @throws Exception
      */
-    public ResponseResult update(GroupInfo groupInfo) throws Exception {
+    public ResponseResult update(GroupUpd groupUpd) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/update";
-        String body = GsonUtil.toJson(groupInfo);
+        String body = GsonUtil.toJson(groupUpd);
         HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
         HttpUtil.setBodyParameter(body, conn);
         String response = "";

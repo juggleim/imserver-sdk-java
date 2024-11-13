@@ -2,9 +2,7 @@ package com.juggle.im.example.group;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
-import com.juggle.im.models.group.GroupInfo;
-import com.juggle.im.models.group.GroupMemberModel;
-import com.juggle.im.models.group.GroupResult;
+import com.juggle.im.models.group.*;
 import com.juggle.im.util.RandomUtil;
 
 public class GroupExample {
@@ -21,7 +19,7 @@ public class GroupExample {
         JuggleIm sdk = new JuggleIm(APP_KEY, APP_SECRET, PREFIX_API);
 
         // create group
-        GroupMemberModel groupModel = new GroupMemberModel();
+        GroupAdd groupModel = new GroupAdd();
         groupModel.setGroupId(RandomUtil.generateRandomString(9));
         groupModel.setGroupName("蜻蜓队长粉丝群（1）");
         groupModel.setMemberIds(new String[]{});
@@ -30,7 +28,7 @@ public class GroupExample {
         System.out.println("createGroupResult:  " + createGroupResult.toString());
 
         // update group
-        GroupInfo update = new GroupInfo();
+        GroupUpd update = new GroupUpd();
         update.setGroupId("N5zNVXSAL");
         update.setGroupName("蛮吉窝窝乡粉丝群（1）");
         update.setGroupPortrait("https://test.icon.com");
