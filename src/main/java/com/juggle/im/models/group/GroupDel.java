@@ -15,4 +15,5 @@ public class GroupDel {
         this.groupId = groupId;
         return this;
     }
+
 }
