@@ -48,14 +48,19 @@ public class GroupExample {
 //        GroupResult infoResult = sdk.group.get("N5zNVXSAL");
 //        System.out.println("infoResult: " + infoResult.toString());
 
-        // group info
-        GroupSetting setting = new GroupSetting();
-        setting.setGroupId("N5zNVXSAL");
-        Map<String, String> params = new HashMap<>(4);
-        params.put("hide_grp_msg", "1");
-        setting.setSettings(params);
-        ResponseResult settingRes = sdk.group.modifyGroupSettings( setting);
-        System.out.println("settingRes: " + settingRes.toString());
+//        // set group setting
+//        GroupSetting setting = new GroupSetting();
+//        setting.setGroupId("N5zNVXSAL");
+//        Map<String, String> params = new HashMap<>(4);
+//        params.put("hide_grp_msg", "1");
+//        setting.setSettings(params);
+//        ResponseResult settingRes = sdk.group.modifyGroupSettings( setting);
+//        System.out.println("settingRes: " + settingRes.toString());
+
+        // get group setting
+        GroupSettingResult settingResult = sdk.group.getGroupSettings("N5zNVXSAL");
+        System.out.println("groupSettingResult: " + settingResult.toString());
+
 
 
     }

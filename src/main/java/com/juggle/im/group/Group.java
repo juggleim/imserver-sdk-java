@@ -126,5 +126,24 @@ public class Group {
         return result;
     }
 
+    /**
+     * 获取群配置
+     * @param groupId
+     * @return
+     * @throws Exception
+     */
+    public GroupSettingResult getGroupSettings(String groupId) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/settings/get?group_id=" + URLEncoder.encode(groupId, "UTF-8");
+        HttpURLConnection conn = HttpUtil.CreateGetHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        String response = "";
+        GroupSettingResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (GroupSettingResult) GsonUtil.fromJson(response, GroupSettingResult.class);
+        } catch (Exception e) {
+            result = new GroupSettingResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage(), null);
+        }
+        return result;
+    }
 
 }
