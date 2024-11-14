@@ -104,5 +104,27 @@ public class Group {
         return result;
     }
 
+    /**
+     * 修改群配置
+     * @param setting
+     * @return
+     * @throws Exception
+     */
+    public ResponseResult modifyGroupSettings(GroupSetting setting) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/settings/set";
+        String body = GsonUtil.toJson(setting);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ResponseResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (ResponseResult) GsonUtil.fromJson(response, ResponseResult.class);
+        } catch (Exception e) {
+            result = new ResponseResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage());
+        }
+        return result;
+    }
+
 
 }

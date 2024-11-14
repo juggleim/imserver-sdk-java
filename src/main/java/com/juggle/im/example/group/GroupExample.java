@@ -5,6 +5,9 @@ import com.juggle.im.models.ResponseResult;
 import com.juggle.im.models.group.*;
 import com.juggle.im.util.RandomUtil;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class GroupExample {
 
     private static final String APP_KEY = "test";
@@ -18,32 +21,41 @@ public class GroupExample {
     public static void main(String[] args) throws Exception {
         JuggleIm sdk = new JuggleIm(APP_KEY, APP_SECRET, PREFIX_API);
 
-        // create group
-        GroupAdd groupModel = new GroupAdd();
-        groupModel.setGroupId(RandomUtil.generateRandomString(9));
-        groupModel.setGroupName("蜻蜓队长粉丝群（1）");
-        groupModel.setMemberIds(new String[]{});
-        groupModel.setGroupPortrait("");
-        ResponseResult createGroupResult = sdk.group.create(groupModel);
-        System.out.println("createGroupResult:  " + createGroupResult.toString());
-
-        // update group
-        GroupUpd update = new GroupUpd();
-        update.setGroupId("N5zNVXSAL");
-        update.setGroupName("蛮吉窝窝乡粉丝群（1）");
-        update.setGroupPortrait("https://test.icon.com");
-        ResponseResult updateRes = sdk.group.update(update);
-        System.out.println("updateResult:  " + updateRes.toString());
-
-        // dismiss group
-        GroupDel dismissModel = new GroupDel();
-        dismissModel.setGroupId("mi8t76DVu");
-        ResponseResult dismissRes = sdk.group.dismiss(dismissModel);
-        System.out.println("dismiss:  " + dismissRes.toString());
+//        // create group
+//        GroupAdd groupModel = new GroupAdd();
+//        groupModel.setGroupId(RandomUtil.generateRandomString(9));
+//        groupModel.setGroupName("蜻蜓队长粉丝群（1）");
+//        groupModel.setMemberIds(new String[]{});
+//        groupModel.setGroupPortrait("");
+//        ResponseResult createGroupResult = sdk.group.create(groupModel);
+//        System.out.println("createGroupResult:  " + createGroupResult.toString());
+//
+//        // update group
+//        GroupUpd update = new GroupUpd();
+//        update.setGroupId("N5zNVXSAL");
+//        update.setGroupName("蛮吉窝窝乡粉丝群（1）");
+//        update.setGroupPortrait("https://test.icon.com");
+//        ResponseResult updateRes = sdk.group.update(update);
+//        System.out.println("updateResult:  " + updateRes.toString());
+//
+//        // dismiss group
+//        GroupDel dismissModel = new GroupDel();
+//        dismissModel.setGroupId("mi8t76DVu");
+//        ResponseResult dismissRes = sdk.group.dismiss(dismissModel);
+//        System.out.println("dismiss:  " + dismissRes.toString());
+//
+//        // group info
+//        GroupResult infoResult = sdk.group.get("N5zNVXSAL");
+//        System.out.println("infoResult: " + infoResult.toString());
 
         // group info
-        GroupResult infoResult = sdk.group.get("N5zNVXSAL");
-        System.out.println("infoResult: " + infoResult.toString());
+        GroupSetting setting = new GroupSetting();
+        setting.setGroupId("N5zNVXSAL");
+        Map<String, String> params = new HashMap<>(4);
+        params.put("hide_grp_msg", "1");
+        setting.setSettings(params);
+        ResponseResult settingRes = sdk.group.modifyGroupSettings( setting);
+        System.out.println("settingRes: " + settingRes.toString());
 
 
     }
