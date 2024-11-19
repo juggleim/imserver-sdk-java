@@ -146,4 +146,49 @@ public class Group {
         return result;
     }
 
+    /**
+     * 进群
+     * @param memberReq
+     * @return
+     * @throws Exception
+     */
+    public ResponseResult join(GroupMemReq memberReq) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/members/add";
+        String body = GsonUtil.toJson(memberReq);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ResponseResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (ResponseResult) GsonUtil.fromJson(response, ResponseResult.class);
+        } catch (Exception e) {
+            result = new ResponseResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 退群
+     * @param memReq
+     * @return
+     * @throws Exception
+     */
+    public ResponseResult quit(GroupMemReq memReq) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/members/del";
+        String body = GsonUtil.toJson(memReq);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ResponseResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (ResponseResult) GsonUtil.fromJson(response, ResponseResult.class);
+        } catch (Exception e) {
+            result = new ResponseResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage());
+        }
+        return result;
+    }
+
+
 }

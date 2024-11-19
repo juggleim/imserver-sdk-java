@@ -3,10 +3,6 @@ package com.juggle.im.example.group;
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
 import com.juggle.im.models.group.*;
-import com.juggle.im.util.RandomUtil;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class GroupExample {
 
@@ -57,9 +53,22 @@ public class GroupExample {
 //        ResponseResult settingRes = sdk.group.modifyGroupSettings( setting);
 //        System.out.println("settingRes: " + settingRes.toString());
 
-        // get group setting
-        GroupSettingResult settingResult = sdk.group.getGroupSettings("N5zNVXSAL");
-        System.out.println("groupSettingResult: " + settingResult.toString());
+//        // get group setting
+//        GroupSettingResult settingResult = sdk.group.getGroupSettings("N5zNVXSAL");
+//        System.out.println("groupSettingResult: " + settingResult.toString());
+
+//        GroupMemReq groupMemAdd = new GroupMemReq();
+//        groupMemAdd.setGroupId("N5zNVXSAL");
+//        groupMemAdd.setMemberIds(new String[] {"JR6Mzj8NJ"});
+//        ResponseResult groupMemRes = sdk.group.join(groupMemAdd);
+//        System.out.println("joinResult:" + groupMemRes.toString());
+
+//        GroupMemReq quitGroup = new GroupMemReq();
+//        quitGroup.setGroupId("N5zNVXSAL");
+//        quitGroup.setMemberIds(new String[] {"JR6Mzj8NJ"});
+//        ResponseResult quitRes = sdk.group.quit(quitGroup);
+//        System.out.println("quitGroupResult:" + quitRes.toString());
+
 
 
 
