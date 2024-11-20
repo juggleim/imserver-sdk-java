@@ -2,7 +2,11 @@ package com.juggle.im.example.group;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
-import com.juggle.im.models.group.*;
+import com.juggle.im.models.group.mute.GroupMemAllowReq;
+import com.juggle.im.models.group.mute.GroupMemMuteReq;
+import com.juggle.im.models.group.mute.GroupMuteReq;
+
+import java.util.List;
 
 public class GroupExample {
 
@@ -69,6 +73,33 @@ public class GroupExample {
 //        ResponseResult quitRes = sdk.group.quit(quitGroup);
 //        System.out.println("quitGroupResult:" + quitRes.toString());
 
+//        // 群禁言
+//        // isMute=0 解除
+//        // isMute=1 群禁言
+//        GroupMuteReq muteReq = new GroupMuteReq();
+//        muteReq.setGroupId("nE7j5Hg2U");
+//        muteReq.setIsMute(0);
+//        ResponseResult groupMuteRes = sdk.group.groupMute(muteReq);
+//        System.out.println("groupMuteResult:" + groupMuteRes.toString());
+
+//        //群指定成员禁言
+//        // 禁言 isMute=1, muteMinute 禁言分钟数，整数 && memberIds 群成员集合
+//        // 取消禁言 isMute=0, memberIds=待解禁成员
+//        GroupMemMuteReq memMuteReq = new GroupMemMuteReq();
+//        memMuteReq.setGroupId("nE7j5Hg2U");
+//        memMuteReq.setIsMute(0);
+//        memMuteReq.setMuteMinute(2);
+//        memMuteReq.setMemberIds(List.of("mi8t76DVu"));
+//        ResponseResult groupMuteRes = sdk.group.groupMemMute(memMuteReq);
+//        System.out.println("groupMemMuteResult:" + groupMuteRes.toString());
+
+        // allow
+//        GroupMemAllowReq memAllowReq = new GroupMemAllowReq();
+//        memAllowReq.setGroupId("nE7j5Hg2U");
+//        memAllowReq.setIsAllow(1);
+//        memAllowReq.setMemberIds(List.of("mi8t76DVu"));
+//        ResponseResult groupAllowRes = sdk.group.groupMemAllow(memAllowReq);
+//        System.out.println("groupMemAllowResult:" + groupAllowRes.toString());
 
 
 

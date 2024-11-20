@@ -3,6 +3,9 @@ package com.juggle.im.group;
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
 import com.juggle.im.models.group.*;
+import com.juggle.im.models.group.mute.GroupMemAllowReq;
+import com.juggle.im.models.group.mute.GroupMemMuteReq;
+import com.juggle.im.models.group.mute.GroupMuteReq;
 import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;
 
@@ -190,5 +193,73 @@ public class Group {
         return result;
     }
 
+    /**
+     * 群禁言
+     * isMute=1 禁言
+     * @param muteReq
+     * @return
+     * @throws Exception
+     */
+    public ResponseResult groupMute(GroupMuteReq muteReq) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/groupmute/set";
+        String body = GsonUtil.toJson(muteReq);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ResponseResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (ResponseResult) GsonUtil.fromJson(response, ResponseResult.class);
+        } catch (Exception e) {
+            result = new ResponseResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     * 禁言-指定群成员
+     * isMute=1 禁言
+     * @param memMuteReq
+     * @return
+     * @throws Exception
+     */
+    public ResponseResult groupMemMute(GroupMemMuteReq memMuteReq) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/groupmembermute/set";
+        String body = GsonUtil.toJson(memMuteReq);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ResponseResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (ResponseResult) GsonUtil.fromJson(response, ResponseResult.class);
+        } catch (Exception e) {
+            result = new ResponseResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage());
+        }
+        return result;
+    }
+
+    /**
+     *
+     * allow
+     * @param memAllowReq
+     * @return
+     * @throws Exception
+     */
+    public ResponseResult groupMemAllow(GroupMemAllowReq memAllowReq) throws Exception {
+        String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/groupmemberallow/set";
+        String body = GsonUtil.toJson(memAllowReq);
+        HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
+        HttpUtil.setBodyParameter(body, conn);
+        String response = "";
+        ResponseResult result = null;
+        try {
+            response = HttpUtil.returnResult(conn);
+            result = (ResponseResult) GsonUtil.fromJson(response, ResponseResult.class);
+        } catch (Exception e) {
+            result = new ResponseResult(500, "request:" + conn.getURL() + ",response:" + response + ",Exception:" + e.getMessage());
+        }
+        return result;
+    }
 
 }
