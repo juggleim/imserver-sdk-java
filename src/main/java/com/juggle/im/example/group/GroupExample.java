@@ -87,21 +87,19 @@ public class GroupExample {
 //        // 取消禁言 isMute=0, memberIds=待解禁成员
 //        GroupMemMuteReq memMuteReq = new GroupMemMuteReq();
 //        memMuteReq.setGroupId("nE7j5Hg2U");
-//        memMuteReq.setIsMute(0);
-//        memMuteReq.setMuteMinute(2);
+//        memMuteReq.setIsMute(1);
+//        memMuteReq.setMuteMinute(8);
 //        memMuteReq.setMemberIds(List.of("mi8t76DVu"));
 //        ResponseResult groupMuteRes = sdk.group.groupMemMute(memMuteReq);
 //        System.out.println("groupMemMuteResult:" + groupMuteRes.toString());
 
-        // allow
+//        //   allow
 //        GroupMemAllowReq memAllowReq = new GroupMemAllowReq();
 //        memAllowReq.setGroupId("nE7j5Hg2U");
 //        memAllowReq.setIsAllow(1);
 //        memAllowReq.setMemberIds(List.of("mi8t76DVu"));
 //        ResponseResult groupAllowRes = sdk.group.groupMemAllow(memAllowReq);
 //        System.out.println("groupMemAllowResult:" + groupAllowRes.toString());
-
-
 
     }
 

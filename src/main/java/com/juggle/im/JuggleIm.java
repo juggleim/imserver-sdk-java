@@ -1,9 +1,9 @@
 package com.juggle.im;
 
-import com.juggle.im.chatroom.Chatroom;
-import com.juggle.im.group.Group;
+import com.juggle.im.methods.chatroom.Chatroom;
+import com.juggle.im.methods.group.Group;
 import com.juggle.im.message.MsgSender;
-import com.juggle.im.user.User;
+import com.juggle.im.methods.user.User;
 
 public class JuggleIm {
     private String appkey;

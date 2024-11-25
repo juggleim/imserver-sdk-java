@@ -1,4 +1,4 @@
-package com.juggle.im.user;
+package com.juggle.im.methods.user;
 
 import java.net.HttpURLConnection;
 import java.util.HashMap;

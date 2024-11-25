@@ -1,4 +1,4 @@
-package com.juggle.im.user;
+package com.juggle.im.methods.user;
 
 import java.net.HttpURLConnection;
 import com.juggle.im.JuggleIm;

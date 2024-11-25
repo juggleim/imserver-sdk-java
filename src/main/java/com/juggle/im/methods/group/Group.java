@@ -1,4 +1,4 @@
-package com.juggle.im.group;
+package com.juggle.im.methods.group;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;

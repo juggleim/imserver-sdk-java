@@ -1,4 +1,4 @@
-package com.juggle.im.chatroom;
+package com.juggle.im.methods.chatroom;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;

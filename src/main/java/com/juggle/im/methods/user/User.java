@@ -1,10 +1,9 @@
-package com.juggle.im.user;
+package com.juggle.im.methods.user;
 
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 
 import com.juggle.im.JuggleIm;
-import com.juggle.im.models.Result;
 import com.juggle.im.models.user.*;
 import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;

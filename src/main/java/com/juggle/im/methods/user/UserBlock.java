@@ -1,4 +1,4 @@
-package com.juggle.im.user;
+package com.juggle.im.methods.user;
 
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
