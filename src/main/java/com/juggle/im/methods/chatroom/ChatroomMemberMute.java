@@ -1,22 +1,22 @@
-package com.juggle.im.chatroom;
+package com.juggle.im.methods.chatroom;
 
 import java.net.HttpURLConnection;
-
+import java.net.URLEncoder;
 import com.juggle.im.JuggleIm;
 import com.juggle.im.models.ResponseResult;
-import com.juggle.im.models.chatroom.ChrmGlobalMuteMemberIds;
-import com.juggle.im.models.chatroom.ChrmGlobalMuteMembersResult;
+import com.juggle.im.models.chatroom.ChatroomMuteMemberIds;
+import com.juggle.im.models.chatroom.ChatroomMuteMembersResult;
 import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;
 
-public class ChrmGlobalMemberMute {
+public class ChatroomMemberMute {
     private JuggleIm juggleim;
-    public ChrmGlobalMemberMute(JuggleIm juggleim){
+    public ChatroomMemberMute(JuggleIm juggleim){
         this.juggleim = juggleim;
     }
 
-    public ResponseResult add(ChrmGlobalMuteMemberIds muteIds)throws Exception{
-        String urlPath = this.juggleim.getApiUrl()+ "/apigateway/chatrooms/globalmutemembers/add";
+    public ResponseResult add(ChatroomMuteMemberIds muteIds)throws Exception{
+        String urlPath = this.juggleim.getApiUrl()+ "/apigateway/chatrooms/mutemembers/add";
         String body = GsonUtil.toJson(muteIds);
         HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
         HttpUtil.setBodyParameter(body, conn);
@@ -31,8 +31,8 @@ public class ChrmGlobalMemberMute {
         return result;
     }
 
-    public ResponseResult remove(ChrmGlobalMuteMemberIds muteIds)throws Exception{
-        String urlPath = this.juggleim.getApiUrl()+ "/apigateway/chatrooms/globalmutemembers/del";
+    public ResponseResult remove(ChatroomMuteMemberIds muteIds)throws Exception{
+        String urlPath = this.juggleim.getApiUrl()+ "/apigateway/chatrooms/mutemembers/del";
         String body = GsonUtil.toJson(muteIds);
         HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);
         HttpUtil.setBodyParameter(body, conn);
@@ -47,8 +47,8 @@ public class ChrmGlobalMemberMute {
         return result;
     }
 
-    public ChrmGlobalMuteMembersResult getList(Integer limit, String offset)throws Exception{
-        String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/globalmutemembers/query?";
+    public ChatroomMuteMembersResult getList(String chatId, Integer limit, String offset)throws Exception{
+        String urlPath = this.juggleim.getApiUrl()+"/apigateway/chatrooms/mutemembers/query?chat_id="+URLEncoder.encode(chatId, "UTF-8");
         if(limit!=null){
             urlPath = urlPath + "&limit="+limit;
         }
@@ -57,12 +57,12 @@ public class ChrmGlobalMemberMute {
         }
         HttpURLConnection conn = HttpUtil.CreateGetHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(),urlPath);
         String response = "";
-        ChrmGlobalMuteMembersResult result = null;
+        ChatroomMuteMembersResult result = null;
         try{
             response = HttpUtil.returnResult(conn);
-            result = (ChrmGlobalMuteMembersResult)GsonUtil.fromJson(response, ChrmGlobalMuteMembersResult.class);
+            result = (ChatroomMuteMembersResult)GsonUtil.fromJson(response, ChatroomMuteMembersResult.class);
         }catch(Exception e){
-            result = new ChrmGlobalMuteMembersResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
+            result = new ChatroomMuteMembersResult(500,"request:"+conn.getURL()+",response:"+response+",Exception:"+e.getMessage(),null);
         }
         return result;
     }
