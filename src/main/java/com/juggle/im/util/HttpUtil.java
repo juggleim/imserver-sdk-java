@@ -104,6 +104,11 @@ public class HttpUtil {
         return CreatePostHttpConnection( appKey, appSecret, uri, "application/json");
     }
 
+    public static HttpURLConnection CreateFilePostHttpConnection(String appKey, String appSecret,
+                                                             String uri, String boundary) throws MalformedURLException, IOException, ProtocolException {
+        return CreatePostHttpConnection(appKey, appSecret, uri, "multipart/form-data; boundary=" + boundary);
+    }
+
     public static HttpURLConnection CreatePostHttpConnection( String appKey, String appSecret,
                                                              String uri,
                                                              String contentType) throws MalformedURLException, IOException, ProtocolException {

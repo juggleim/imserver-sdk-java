@@ -3,6 +3,7 @@ package com.juggle.im;
 import com.juggle.im.methods.chatroom.Chatroom;
 import com.juggle.im.methods.group.Group;
 import com.juggle.im.message.MsgSender;
+import com.juggle.im.methods.sensitive.SensitiveWord;
 import com.juggle.im.methods.user.User;
 
 public class JuggleIm {
@@ -14,6 +15,8 @@ public class JuggleIm {
     public MsgSender msgSender;
     public Group group;
     public Chatroom chatroom;
+    public SensitiveWord sensitiveWord;
+
     public JuggleIm(String appkey, String secret, String apiUrl){
         this.appkey = appkey;
         this.secret = secret;
@@ -22,6 +25,7 @@ public class JuggleIm {
         this.msgSender = new MsgSender(this);
         this.group = new Group(this);
         this.chatroom = new Chatroom(this);
+        this.sensitiveWord = new SensitiveWord(this);
     }
 
     public String getAppkey(){
