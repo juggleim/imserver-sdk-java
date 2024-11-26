@@ -59,5 +59,6 @@ public class SensitiveExample {
 //        ResponseResult fileResult = sdk.sensitiveWord.importFromFile(fileReq);
 //        System.out.println("fileResult:" + fileResult.toString());
 
+
     }
 }
