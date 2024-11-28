@@ -11,6 +11,14 @@ import com.juggle.im.models.user.UserTagsResult;
 import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;
 
+/**
+ * 类 {@code TagUser } 用户分组操作方法
+ * <p>
+ * 主要包括 添加，删除，查询等操作
+ * </p>
+ *
+ * @date 2024-11-28
+ */
 public class TagUser {
     private JuggleIm juggleim;
     public TagUser(JuggleIm juggleim){
