@@ -3,6 +3,7 @@ package com.juggle.im.models.group;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class GroupMemReq {
@@ -14,7 +15,7 @@ public class GroupMemReq {
     private Map<String, String> extFields;
 
     @SerializedName("member_ids")
-    private String [] memberIds;
+    private List<String> memberIds;
 
     public GroupMemReq() {
     }
@@ -37,13 +38,12 @@ public class GroupMemReq {
         return this;
     }
 
-    public String[] getMemberIds() {
+    public List<String> getMemberIds() {
         return memberIds;
     }
 
-    public GroupMemReq setMemberIds(String[] memberIds) {
+    public void setMemberIds(List<String> memberIds) {
         this.memberIds = memberIds;
-        return this;
     }
 
     @Override
@@ -51,7 +51,8 @@ public class GroupMemReq {
         return "GroupMemReq{" +
                 "groupId='" + groupId + '\'' +
                 ", extFields=" + extFields +
-                ", memberIds=" + Arrays.toString(memberIds) +
+                ", memberIds=" + memberIds +
                 '}';
     }
+
 }

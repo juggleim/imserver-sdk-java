@@ -12,8 +12,19 @@ import com.juggle.im.util.HttpUtil;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 
+/**
+ * 类 {@code Group } 群相关操作方法
+ * <p>
+ * 主要包括 添加，删除，获取群信息，群成员禁言等群相关操作
+ * </p>
+ *
+ * @date 2024-11-28
+ */
 public class Group {
 
+    /**
+     * 相关配置信息
+     */
     private JuggleIm juggleim;
 
     public Group(JuggleIm juggleim) {
@@ -22,9 +33,10 @@ public class Group {
 
     /**
      * 创建群
-     * @param groupAdd
-     * @return
-     * @throws Exception
+     *
+     * @param groupAdd {@link GroupAdd} 传入创建群相关参数：群id, 名称，头像
+     * @return {@link ResponseResult} 返回是否成功信息
+     * @throws Exception 异常
      */
     public ResponseResult create(GroupAdd groupAdd) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/add";
@@ -44,10 +56,13 @@ public class Group {
 
     /**
      * 修改群
+     * <p>
      * groupUpd.groupId必填
-     * @param groupUpd
-     * @return
-     * @throws Exception
+     * </p>
+     *
+     * @param groupUpd {@link GroupUpd} 更新群信息
+     * @return {@link ResponseResult} 返回是否成功信息
+     * @throws Exception 异常
      */
     public ResponseResult update(GroupUpd groupUpd) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/update";
@@ -67,9 +82,10 @@ public class Group {
 
     /**
      * 获取群信息
-     * @param groupId
-     * @return
-     * @throws Exception
+     *
+     * @param groupId {@link String} 群id
+     * @return {@link GroupResult} 返回详细群信息结果
+     * @throws Exception 异常
      */
     public GroupResult get(String groupId) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/info?group_id=" + URLEncoder.encode(groupId, "UTF-8");
@@ -87,9 +103,10 @@ public class Group {
 
     /**
      * 解散群
-     * @param groupDel
-     * @return
-     * @throws Exception
+     *
+     * @param groupDel {@link GroupDel} 传入群id
+     * @return {@link ResponseResult} 是否解散成功
+     * @throws Exception 异常
      */
     public ResponseResult dismiss(GroupDel groupDel) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/del";
@@ -109,9 +126,10 @@ public class Group {
 
     /**
      * 修改群配置
-     * @param setting
-     * @return
-     * @throws Exception
+     *
+     * @param setting {@link GroupSetting} 群配置参数
+     * @return {@link ResponseResult} 返回是否成功
+     * @throws Exception 异常
      */
     public ResponseResult modifyGroupSettings(GroupSetting setting) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/settings/set";
@@ -131,9 +149,10 @@ public class Group {
 
     /**
      * 获取群配置
-     * @param groupId
-     * @return
-     * @throws Exception
+     *
+     * @param groupId {@link String} 传入群id
+     * @return {@link GroupSettingResult} 返回群配置信息
+     * @throws Exception 异常
      */
     public GroupSettingResult getGroupSettings(String groupId) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/settings/get?group_id=" + URLEncoder.encode(groupId, "UTF-8");
@@ -151,9 +170,10 @@ public class Group {
 
     /**
      * 进群
-     * @param memberReq
-     * @return
-     * @throws Exception
+     *
+     * @param memberReq {@link GroupMemReq} 传入群id, 群成员id
+     * @return {@link ResponseResult} 返回是否进群成功
+     * @throws Exception 异常
      */
     public ResponseResult join(GroupMemReq memberReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/members/add";
@@ -173,9 +193,10 @@ public class Group {
 
     /**
      * 退群
-     * @param memReq
-     * @return
-     * @throws Exception
+     *
+     * @param memReq {@link GroupMemReq} 传入群id, 群成员id
+     * @return {@link ResponseResult} 返回是否成功
+     * @throws Exception 异常
      */
     public ResponseResult quit(GroupMemReq memReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/members/del";
@@ -196,9 +217,10 @@ public class Group {
     /**
      * 群禁言
      * isMute=1 禁言
-     * @param muteReq
-     * @return
-     * @throws Exception
+     *
+     * @param muteReq {@link GroupMuteReq} 传入群id, 禁言标识等
+     * @return {@link ResponseResult} 返回是否成功
+     * @throws Exception 异常
      */
     public ResponseResult groupMute(GroupMuteReq muteReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/groupmute/set";
@@ -219,9 +241,10 @@ public class Group {
     /**
      * 禁言-指定群成员
      * isMute=1 禁言
-     * @param memMuteReq
-     * @return
-     * @throws Exception
+     *
+     * @param memMuteReq {@link GroupMemMuteReq} 传入群id, 群成员id等
+     * @return {@link ResponseResult} 返回是否成功信息
+     * @throws Exception 异常
      */
     public ResponseResult groupMemMute(GroupMemMuteReq memMuteReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/groupmembermute/set";
@@ -240,11 +263,11 @@ public class Group {
     }
 
     /**
-     *
      * allow
-     * @param memAllowReq
-     * @return
-     * @throws Exception
+     *
+     * @param memAllowReq {@link GroupMemAllowReq} 传入群id, 群成员ids等
+     * @return {@link ResponseResult} 返回是否成功信息
+     * @throws Exception 异常
      */
     public ResponseResult groupMemAllow(GroupMemAllowReq memAllowReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/groupmemberallow/set";

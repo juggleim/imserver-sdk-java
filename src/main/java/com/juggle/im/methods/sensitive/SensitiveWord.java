@@ -7,9 +7,18 @@ import com.juggle.im.util.GsonUtil;
 import com.juggle.im.util.HttpUtil;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.*;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 
+/**
+ * 类 {@code SensitiveWord } 敏感词相关操作方法
+ * <p>
+ * 主要包括 添加，删除敏感词，导入文件等操作
+ * </p>
+ *
+ * @date 2024-11-28
+ */
 public class SensitiveWord {
 
     private JuggleIm juggleim;
@@ -19,11 +28,11 @@ public class SensitiveWord {
     }
 
     /**
-     * 创建敏感词
+     * 添加敏感词
      *
-     * @param addReq
-     * @return
-     * @throws Exception
+     * @param addReq {@link SensitiveWordAddReq} 敏感词添加对象
+     * @return {@link ResponseResult} 返回成功失败的信息
+     * @throws Exception 如果http请求出现异常，则可能抛出exception
      */
     public ResponseResult add(SensitiveWordAddReq addReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/sensitivewords/add";
@@ -42,11 +51,11 @@ public class SensitiveWord {
     }
 
     /**
-     * remove敏感词
+     * del敏感词
      *
-     * @param delReq
-     * @return
-     * @throws Exception
+     * @param delReq {@link SensitiveWordDelReq} 传入待删除对象信息
+     * @return {@link ResponseResult} 返回是否成功相关信息
+     * @throws Exception 异常
      */
     public ResponseResult del(SensitiveWordDelReq delReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/sensitivewords/del";
@@ -65,11 +74,11 @@ public class SensitiveWord {
     }
 
     /**
-     * 按照分页获取敏感词数据
+     * 分页获取敏感词数据
      *
-     * @param req
-     * @return
-     * @throws Exception
+     * @param req {@link SensitiveWordReq} 分页相关参数
+     * @return {@link SensitiveWordResult} 返回敏感词详情
+     * @throws Exception 异常
      */
     public SensitiveWordResult page(SensitiveWordReq req) throws Exception {
         StringBuilder sb = new StringBuilder();
@@ -101,12 +110,11 @@ public class SensitiveWord {
     }
 
     /**
-     * 导入文件
-     * 将文件转化为二进制数据，传入fileReq对象。
+     * 以文件上传形式批量导入敏感词
      *
-     * @param fileReq
-     * @return
-     * @throws Exception
+     * @param fileReq {@link SensitiveWordFileReq} 传入文件对象参数
+     * @return {@link ResponseResult} 返回码 + 返回信息
+     * @throws Exception 如果server服务不可用, http请求失败，则返回exception
      */
     public ResponseResult importFromFile(SensitiveWordFileReq fileReq) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/sensitivewords/import";
@@ -149,6 +157,13 @@ public class SensitiveWord {
         return result;
     }
 
+    /**
+     * 内部使用 拼接 http请求 body file 部分格式
+     *
+     * @param fileReq {@link SensitiveWordFileReq} 文件相关参数对象
+     * @return byte[] 返回字符串数组
+     * @throws UnsupportedEncodingException
+     */
     private static byte[] getFileEntry(SensitiveWordFileReq fileReq) throws UnsupportedEncodingException {
         StringBuilder entry = new StringBuilder();
         entry.append("Content-Disposition:form-data; name=\"");

@@ -2,25 +2,45 @@ package com.juggle.im.models.group;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+/**
+ * 添加群 传参对象
+ *
+ * @date 2024-11-28
+ */
 public class GroupAdd {
 
+    /**
+     * 群id
+     */
     @SerializedName("group_id")
     private String groupId;
 
+    /**
+     * 群名称
+     */
     @SerializedName("group_name")
     private String groupName;
 
+    /**
+     * 群头像
+     */
     @SerializedName("group_portrait")
     private String groupPortrait;
 
+    /**
+     * 其他配置
+     */
     @SerializedName("ext_fields")
     private Map<String, String> extFields;
 
+    /**
+     * 群成员id集合
+     */
     @SerializedName("member_ids")
-    private String [] memberIds;
+    private List<String> memberIds;
 
     public GroupAdd() {
     }
@@ -61,23 +81,23 @@ public class GroupAdd {
         return this;
     }
 
-    public String[] getMemberIds() {
+    public List<String> getMemberIds() {
         return memberIds;
     }
 
-    public GroupAdd setMemberIds(String[] memberIds) {
+    public GroupAdd setMemberIds(List<String> memberIds) {
         this.memberIds = memberIds;
         return this;
     }
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "GroupAdd{" +
                 "groupId='" + groupId + '\'' +
                 ", groupName='" + groupName + '\'' +
                 ", groupPortrait='" + groupPortrait + '\'' +
                 ", extFields=" + extFields +
-                ", memberIds=" + Arrays.toString(memberIds) +
+                ", memberIds=" + memberIds +
                 '}';
     }
 

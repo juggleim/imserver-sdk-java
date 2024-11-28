@@ -12,6 +12,14 @@ import com.juggle.im.util.HttpUtil;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 
+/**
+ * 类 {@code Chatroom } 聊天室相关操作方法
+ * <p>
+ * 主要包括 添加，删除，获取聊天室信息等相关操作
+ * </p>
+ *
+ * @date 2024-11-28
+ */
 public class Chatroom {
     private JuggleIm juggleim;
 
