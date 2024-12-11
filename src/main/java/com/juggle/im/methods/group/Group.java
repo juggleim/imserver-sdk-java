@@ -131,7 +131,7 @@ public class Group {
      * @return {@link ResponseResult} 返回是否成功
      * @throws Exception 异常
      */
-    public ResponseResult modifyGroupSettings(GroupSetting setting) throws Exception {
+    public ResponseResult updGroupSettings(GroupSetting setting) throws Exception {
         String urlPath = this.juggleim.getApiUrl() + "/apigateway/groups/settings/set";
         String body = GsonUtil.toJson(setting);
         HttpURLConnection conn = HttpUtil.CreatePostHttpConnection(this.juggleim.getAppkey(), this.juggleim.getSecret(), urlPath);

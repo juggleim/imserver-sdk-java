@@ -54,7 +54,7 @@ public class GroupExample {
 //        Map<String, String> params = new HashMap<>(4);
 //        params.put("hide_grp_msg", "1");
 //        setting.setSettings(params);
-//        ResponseResult settingRes = sdk.group.modifyGroupSettings( setting);
+//        ResponseResult settingRes = sdk.group.updGroupSettings( setting);
 //        System.out.println("settingRes: " + settingRes.toString());
 
 //        // get group setting
